@@ -1,0 +1,24 @@
+{
+  "name": "hermes-lite-prisma-compute",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/server.ts --target=node --bundle --outfile dist/server.mjs && bun build src/worker-server.ts --target=node --bundle --outfile dist/worker-server.mjs",
+    "check": "tsc --noEmit",
+    "deploy": "npm run build && prisma deploy module.ts",
+    "set-webhook": "node scripts/set-webhook.mjs"
+  },
+  "dependencies": {
+    "@prisma/composer": "0.29.1",
+    "@prisma/composer-prisma-cloud": "0.29.1",
+    "arktype": "^2.2.3",
+    "pg": "8.22.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.15.30",
+    "@types/pg": "^8.15.5",
+    "prisma": "latest",
+    "typescript": "^6.0.3"
+  }
+}
